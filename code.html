@@ -1,0 +1,30 @@
+<!--/* More: https://docs.adobe.com/docs/en/htl/docs/block-statements.html#resource */-->
+
+<!--/* By default, the AEM decoration tags are disabled, the decorationTagName option allows to bring them back, and the cssClassName to add classes to that element. */-->
+<div data-sly-resource="${'headline' @
+                        resourceType='about-project/components/content/c34-section-headline',
+                        decorationTagName='span',
+                        cssClassName='className'
+                        }"></div>
+
+<!--/* More about the decoration tag: https://docs.adobe.com/docs/en/aem/6-3/develop/components/decoration-tag.html */-->
+<!--/* This allows you to include tags from the included resource's _cq_htmlTag.html. */-->
+<!--/* If there is more than one resource, wrap each in `sly` tags so the decoration tag gets applied to all of them, not just the first one. */-->
+<sly>
+  <div data-sly-resource="${'problem' @resourceType='path/to/resource', decoration=true}"></div>
+</sly>
+<sly>
+  <div data-sly-resource="${'solution' @resourceType='path/to/another/resource', decoration=true}"></div>
+</sly>
+
+<!--/* About Sling selectors: https://sling.apache.org/documentation/the-sling-engine/url-decomposition.html */-->
+<article data-sly-resource="${'path/to/resource' @ selectors='selector'}"></article>
+<article data-sly-resource="${'path/to/resource' @ selectors=['s1', 's2']}"></article>
+<article data-sly-resource="${'path/to/resource' @ addSelectors='selector'}"></article>
+<article data-sly-resource="${'path/to/resource' @ removeSelectors='selector1'}"></article>
+
+<!--/* Remove all selectors: */-->
+<article data-sly-resource="${'path/to/resource' @ removeSelectors}"></article>
+
+<!--/* Change the WCM mode of an included resource: */-->
+<article data-sly-resource="${'path/to/resource' @ wcmmode='disabled'}"></article>
